@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string.h>
+#include <conio.h>
 using namespace std;
-//This could have been easily done without OOP, but I'm learning so it is a great exercise :)
-//Class for matrix functions;
+
+//Clasa pentru operatiile matricelor
 class Operatii {
   public:
     void adunare_matrice(int a[10][10], int b[10][10], int c[10][10], int n) {
-      int i, j;
       for(i=1; i<=n; i++) {
         for(j=1; j<=n; j++) {
           c[i][j] = a[i][j] + b[i][j];
@@ -15,7 +15,6 @@ class Operatii {
     }
 
     void inmultire_matrice(int a[10][10], int b[10][10], int c[10][10], int n) {
-      int i, j;
       for(i=1; i<=n; i++) {
         for(j=1; j<=n; j++) {
           c[i][j] = a[i][j] * b[i][j];
@@ -24,7 +23,6 @@ class Operatii {
     }
 
     void patrat_matrice(int a[10][10], int c[10][10], int n) {
-      int i, j;
       for(i=1; i<=n; i++) {
         for(j=1; j<=n; j++) {
           c[i][j] = a[i][j] * a[i][j];
@@ -33,19 +31,18 @@ class Operatii {
     }
 
     int urma_matrice(int a[10][10], int n) {
-      int i, urma = 0;
       for(i=1; i<=n; i++) {
           urma += a[i][i];
       }
       return urma;
     }
+    private: int i; int j; int urma = 0;
 };
 
-//Class for reading/writing matrix;
+//Clasa pentru afisarea si citirea matricelor
 class Standard {
   public:
     void citire_matrice(int a[10][10], int n) {
-      int i, j;
       for(i=1; i<=n; i++) {
         for(j=1; j<=n; j++) {
           cout<<"a["<<i<<"]["<<j<<"] = "; cin>>a[i][j];
@@ -53,7 +50,6 @@ class Standard {
       }
     }
     void afisare_matrice(int a[10][10], int n) {
-      int i, j;
       for(i=1; i<=n; i++) {
         for(j=1; j<=n; j++) {
           cout<<a[i][j]<<" ";
@@ -61,14 +57,16 @@ class Standard {
         cout<<endl;
       }
     }
+  private: int i; int j;
 };
 
 int main() {
-  int a[10][10], b[10][10], c[10][10], n, i, j;
+  int a[10][10], b[10][10], c[10][10], n;
   Operatii matriceO;
   Standard matriceS;
   int varianta1, varianta2, varianta3;
-  cout<<"Pentru a efectua operatii cu matrici apasati 0, pentru urma matricii apasati 1: "; cin>>varianta1;
+  while (varianta1 != 2) {
+  cout<<"Pentru a efectua operatii cu matrici apasati 0, pentru urma matricii apasati 1, sau 2 pentru a iesi din program: "; cin>>varianta1;
   if(varianta1 == 0) {
       cout<<"Vrei sa ridici la patrat o matrice? 0 - Da, 1 - Nu: "; cin>>varianta2;
       if(varianta2 == 0) {
@@ -97,8 +95,10 @@ int main() {
         cout<<"Dimensiunea matricei: "; cin>>n;
         matriceS.citire_matrice(a, n);
         matriceS.afisare_matrice(a, n);
-        cout<<"Urma acestei matrice este: "<<matriceO.urma_matrice(a, n);
+        cout<<"Urma acestei matrice este: "<<matriceO.urma_matrice(a, n)<<endl;
     }
+  }
+  getch();
 }
 
 
