@@ -1,2 +1,2 @@
-# C-C
-Some school/personal stuff (beginner)
+# Automation Stuff
+Some school/personal stuff 
